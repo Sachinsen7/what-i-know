@@ -1,0 +1,115 @@
+@import "../portfolio-structure.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --knowledge-bg: #ddd8cf;
+  --knowledge-bg-strong: #d4cec4;
+  --knowledge-ink: #262626;
+  --knowledge-ink-muted: rgba(38, 38, 38, 0.68);
+  --knowledge-accent: #6f7c77;
+  --knowledge-accent-soft: rgba(111, 124, 119, 0.16);
+}
+
+[data-theme="dark"] {
+  --knowledge-bg: #0f1d24;
+  --knowledge-bg-strong: #152932;
+  --knowledge-ink: #edf6f3;
+  --knowledge-ink-muted: rgba(237, 246, 243, 0.7);
+  --knowledge-accent: #8fd1c6;
+  --knowledge-accent-soft: rgba(143, 209, 198, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--knowledge-bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--knowledge-ink);
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.36), transparent 35%),
+    linear-gradient(180deg, var(--knowledge-bg), var(--knowledge-bg-strong));
+  font-family: "Segoe UI", sans-serif;
+  transition:
+    background-color var(--portfolio-duration-base) var(--portfolio-ease-in-out),
+    color var(--portfolio-duration-base) var(--portfolio-ease-in-out);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.knowledge-app {
+  display: grid;
+  gap: var(--portfolio-stack-gap-xl);
+}
+
+.knowledge-hero {
+  display: grid;
+  gap: var(--portfolio-stack-gap-md);
+}
+
+.knowledge-grid {
+  display: grid;
+  gap: var(--portfolio-stack-gap-md);
+}
+
+.knowledge-toggle,
+.knowledge-action {
+  border: var(--portfolio-border-width) solid var(--portfolio-border-color);
+  border-radius: var(--portfolio-radius-pill);
+  background: var(--portfolio-surface-fill-muted);
+  color: var(--knowledge-ink);
+  transition:
+    transform var(--portfolio-duration-fast) var(--portfolio-ease-standard),
+    border-color var(--portfolio-duration-base) var(--portfolio-ease-standard),
+    background-color var(--portfolio-duration-base) var(--portfolio-ease-standard);
+}
+
+.knowledge-toggle:hover,
+.knowledge-action:hover {
+  transform: translateY(var(--portfolio-hover-lift-y));
+  border-color: var(--portfolio-border-color-strong);
+}
+
+.knowledge-topic {
+  color: var(--knowledge-ink);
+}
+
+.knowledge-muted {
+  color: var(--knowledge-ink-muted);
+}
+
+.knowledge-accent {
+  color: var(--knowledge-accent);
+}
+
+.knowledge-empty {
+  border-style: dashed;
+}
+
+@media (min-width: 768px) {
+  .knowledge-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .knowledge-toggle,
+  .knowledge-action {
+    transition-duration: 0.1s;
+  }
+}

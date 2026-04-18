@@ -3,14 +3,20 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MoonStar, SunMedium } from "lucide-react";
-import { CategoryCard } from "@/components/knowledge-map/CategoryCard";
+import { ExpandableCategory } from "@/components/knowledge-map/ExpandableCategory";
 import { useKnowledgeMap } from "@/hooks/useKnowledgeMap";
 import { portfolioCardReveal, portfolioCardTransition } from "@/components/ui/portfolio-motion";
 
 export function CategoryGrid() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
-  const { categories, openCategoryId, selectedTopic, selectedTopicId, toggleCategory, selectTopic, closeTopic } =
-    useKnowledgeMap();
+  const {
+    categories,
+    openCategoryId,
+    selectedTopicId,
+    toggleCategory,
+    selectTopic,
+    closeTopic,
+  } = useKnowledgeMap();
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -32,7 +38,7 @@ export function CategoryGrid() {
               A live map of the systems and backend ideas I am actively studying.
             </h1>
             <p className="m-0 text-sm leading-7 knowledge-muted sm:text-base">
-              Each track expands in place so the whole learning graph stays on one calm, portfolio-grade canvas.
+              Each track expands in place to show all topics clearly with proper spacing and natural flow.
             </p>
           </div>
           <button
@@ -46,14 +52,13 @@ export function CategoryGrid() {
         </div>
       </motion.div>
 
-      <div className="knowledge-grid">
+      <div className="knowledge-categories">
         {categories.map((category) => (
-          <CategoryCard
+          <ExpandableCategory
             key={category.id}
             category={category}
-            isOpen={openCategoryId === category.id}
-            selectedTopic={openCategoryId === category.id ? selectedTopic : null}
-            selectedTopicId={openCategoryId === category.id ? selectedTopicId : null}
+            isExpanded={openCategoryId === category.id}
+            selectedTopicId={selectedTopicId}
             onToggle={toggleCategory}
             onSelectTopic={selectTopic}
             onCloseTopic={closeTopic}

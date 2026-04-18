@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { categories } from "@/data/topics";
 
 export function useKnowledgeMap() {
-  const [openCategoryId, setOpenCategoryId] = useState<string | null>(categories[0]?.id ?? null);
+  const [openCategoryId, setOpenCategoryId] = useState<string | null>(null);
   const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null);
 
   const activeCategory = useMemo(
@@ -18,8 +18,16 @@ export function useKnowledgeMap() {
   );
 
   const toggleCategory = (categoryId: string) => {
-    setSelectedTopicId(null);
-    setOpenCategoryId((current) => (current === categoryId ? null : categoryId));
+    setOpenCategoryId((current) => {
+      if (current === categoryId) {
+        setSelectedTopicId(null);
+        return null;
+      }
+
+      const nextCategory = categories.find((category) => category.id === categoryId) ?? null;
+      setSelectedTopicId(nextCategory?.topics[0]?.id ?? null);
+      return categoryId;
+    });
   };
 
   const selectTopic = (topicId: string) => {
@@ -27,9 +35,15 @@ export function useKnowledgeMap() {
   };
 
   const closeTopic = () => setSelectedTopicId(null);
+  const closeCategory = () => {
+    setSelectedTopicId(null);
+    setOpenCategoryId(null);
+  };
 
   return {
+    activeCategory,
     categories,
+    closeCategory,
     openCategoryId,
     selectedTopic,
     selectedTopicId,

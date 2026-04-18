@@ -12,21 +12,21 @@
   --portfolio-space-12: 3rem;
   --portfolio-space-16: 4rem;
 
-  --portfolio-section-padding-x: var(--portfolio-space-4);
-  --portfolio-section-padding-x-sm: var(--portfolio-space-6);
-  --portfolio-section-padding-y-tight: var(--portfolio-space-8);
-  --portfolio-section-padding-y: var(--portfolio-space-10);
-  --portfolio-section-padding-y-roomy: var(--portfolio-space-12);
+  --portfolio-section-padding-x: var(--portfolio-space-6);
+  --portfolio-section-padding-x-sm: var(--portfolio-space-8);
+  --portfolio-section-padding-y-tight: var(--portfolio-space-10);
+  --portfolio-section-padding-y: var(--portfolio-space-12);
+  --portfolio-section-padding-y-roomy: var(--portfolio-space-16);
 
-  --portfolio-card-padding: var(--portfolio-space-4);
-  --portfolio-card-padding-lg: var(--portfolio-space-5);
-  --portfolio-card-padding-xl: var(--portfolio-space-6);
+  --portfolio-card-padding: var(--portfolio-space-6);
+  --portfolio-card-padding-lg: var(--portfolio-space-8);
+  --portfolio-card-padding-xl: var(--portfolio-space-10);
 
-  --portfolio-stack-gap-xs: var(--portfolio-space-2);
-  --portfolio-stack-gap-sm: var(--portfolio-space-3);
-  --portfolio-stack-gap-md: var(--portfolio-space-4);
-  --portfolio-stack-gap-lg: var(--portfolio-space-5);
-  --portfolio-stack-gap-xl: var(--portfolio-space-6);
+  --portfolio-stack-gap-xs: var(--portfolio-space-3);
+  --portfolio-stack-gap-sm: var(--portfolio-space-4);
+  --portfolio-stack-gap-md: var(--portfolio-space-5);
+  --portfolio-stack-gap-lg: var(--portfolio-space-6);
+  --portfolio-stack-gap-xl: var(--portfolio-space-8);
 
   --portfolio-radius-sm: 0.125rem;
   --portfolio-radius-md: 0.375rem;
@@ -48,11 +48,11 @@
   --portfolio-surface-fill-dark-muted: rgba(255, 255, 255, 0.04);
   --portfolio-surface-fill-dark-elevated: rgba(15, 15, 16, 0.88);
 
-  --portfolio-shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.08);
-  --portfolio-shadow-card: 0 18px 45px rgba(15, 23, 42, 0.05);
-  --portfolio-shadow-panel: 0 16px 40px rgba(15, 23, 42, 0.1);
-  --portfolio-shadow-float: 0 24px 60px rgba(15, 23, 42, 0.16);
-  --portfolio-shadow-glass: 0 4px 30px rgba(0, 0, 0, 0.1);
+  --portfolio-shadow-soft: 0 2px 8px rgba(15, 23, 42, 0.06);
+  --portfolio-shadow-card: 0 4px 12px rgba(15, 23, 42, 0.04);
+  --portfolio-shadow-panel: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --portfolio-shadow-float: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --portfolio-shadow-glass: 0 2px 16px rgba(0, 0, 0, 0.04);
 
   --portfolio-duration-theme: 100ms;
   --portfolio-duration-fast: 180ms;
@@ -154,8 +154,6 @@
 .portfolio-surface--floating {
   background: var(--portfolio-surface-fill-elevated);
   box-shadow: var(--portfolio-shadow-panel);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
 }
 
 .portfolio-surface--interactive {
@@ -163,12 +161,12 @@
 }
 
 .portfolio-surface--interactive:hover {
-  transform: translateY(var(--portfolio-hover-lift-y));
+  transform: translateY(var(--portfolio-hover-lift-y-subtle));
   border-color: var(--portfolio-border-color-strong);
 }
 
 .portfolio-surface--interactive:active {
-  transform: translateY(0) scale(var(--portfolio-press-scale));
+  transform: translateY(0);
 }
 
 .portfolio-card {
@@ -263,14 +261,12 @@
   overflow: hidden;
   border: var(--portfolio-border-width) solid var(--portfolio-border-color);
   border-radius: var(--portfolio-radius-sm);
-  background:
-    linear-gradient(135deg, rgba(243, 244, 246, 1), rgba(255, 255, 255, 1));
+  background: var(--portfolio-surface-fill);
   padding: 0.75rem;
 }
 
 [data-theme="dark"] .portfolio-media-frame {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  background: var(--portfolio-surface-fill);
 }
 
 @media (min-width: 640px) {

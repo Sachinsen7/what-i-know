@@ -6,33 +6,30 @@ import "@/styles/portfolio-structure.css";
 export const portfolioCardReveal = {
   initial: {
     opacity: 0,
-    y: 10,
-    scale: 0.99,
+    y: 8,
   },
   animate: {
     opacity: 1,
     y: 0,
-    scale: 1,
   },
   exit: {
     opacity: 0,
-    y: -10,
-    scale: 1.01,
+    y: -8,
   },
 };
 
 export const portfolioCardTransition = {
-  duration: 0.2,
+  duration: 0.15,
   ease: "easeInOut",
 };
 
 const hoverTransition = {
-  duration: 0.2,
+  duration: 0.15,
   ease: "easeOut",
 };
 
 const tapTransition = {
-  duration: 0.18,
+  duration: 0.12,
   ease: "easeOut",
 };
 
@@ -63,7 +60,7 @@ const PortfolioStructureCard = React.forwardRef(function PortfolioStructureCard(
       whileHover={
         interactive
           ? {
-              y: -2,
+              y: -1,
               transition: hoverTransition,
             }
           : undefined
@@ -72,7 +69,6 @@ const PortfolioStructureCard = React.forwardRef(function PortfolioStructureCard(
         interactive
           ? {
               y: 0,
-              scale: 0.98,
               transition: tapTransition,
             }
           : undefined
